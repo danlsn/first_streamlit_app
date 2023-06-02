@@ -28,7 +28,10 @@ fruit_search = "kiwi"
 fruityvice_response = requests.get(f"https://www.fruityvice.com/api/fruit/{fruit_search}")
 streamlit.header("Fruityvice Fruit Advice!")
 
-# write your own comment -what does the next line do?
+fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+streamlit.write('The user entered ', fruit_choice)
+
+# Load JSON into DataFrame using pd.json_normalize
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-# write your own comment - what does this do?
+# Display the table on the page.
 streamlit.dataframe(fruityvice_normalized)
